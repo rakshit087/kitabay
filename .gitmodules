@@ -1,0 +1,3 @@
+[submodule "kitabay-sc/lib/openzeppelin-contracts"]
+	path = kitabay-sc/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
