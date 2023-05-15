@@ -12,7 +12,7 @@ contract KitabTest is Test {
     address addr3 = address(0x3);
 
     function setUp() public {
-        kitab = new Kitab();
+        kitab = new Kitab("The Achemist", "ALC", "https://example.com/");
     }
 
     function testMint() public {

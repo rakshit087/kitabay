@@ -8,14 +8,20 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 contract Kitab is ERC721Royalty, Ownable {
     using Counters for Counters.Counter;
 
+    string private _baseTokenURI; 
     Counters.Counter private _tokenIdCounter;
 
-    constructor() ERC721("MyToken", "MTK") {
+    constructor(
+        string memory name,
+        string memory symbol,
+        string memory baseTokenURI
+    ) ERC721(name, symbol) {
+        _baseTokenURI = baseTokenURI;
         _setDefaultRoyalty(address(this), 1000);
     }
 
-    function _baseURI() internal pure override returns (string memory) {
-        return "https://gateway.pinata.cloud/ipfs/Qmac8mUyNQ7JrJWAorZvSCjrsMzKB5MJuvPpJfnv85dhjd/";
+    function _baseURI() internal view override returns (string memory) {
+        return _baseTokenURI;
     }
 
     function safeMint(address to) public onlyOwner {
@@ -23,5 +29,5 @@ contract Kitab is ERC721Royalty, Ownable {
         _tokenIdCounter.increment();
         _safeMint(to, tokenId);
     }
-    
+
 }
