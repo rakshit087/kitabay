@@ -4,21 +4,19 @@ pragma solidity ^0.8.13;
 import "forge-std/Test.sol";
 import "../src/Kitab.sol";
 
-contract CounterTest is Test {
-    Counter public counter;
+contract KitabTest is Test {
+
+    Kitab kitab;
+    address addr1 = address(0x1);
+    address addr2 = address(0x2);
+    address addr3 = address(0x3);
 
     function setUp() public {
-        counter = new Counter();
-        counter.setNumber(0);
+        kitab = new Kitab();
     }
 
-    function testIncrement() public {
-        counter.increment();
-        assertEq(counter.number(), 1);
-    }
-
-    function testSetNumber(uint256 x) public {
-        counter.setNumber(x);
-        assertEq(counter.number(), x);
+    function testMint() public {
+        kitab.safeMint(addr1);
+        assertEq(kitab.balanceOf(addr1), 1);
     }
 }

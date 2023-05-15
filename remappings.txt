@@ -1,0 +1,3 @@
+ds-test/=kitabay-sc/lib/forge-std/lib/ds-test/src/
+forge-std/=kitabay-sc/lib/forge-std/src/
+@openzeppelin/=kitabay-sc/lib/openzeppelin-contracts/
