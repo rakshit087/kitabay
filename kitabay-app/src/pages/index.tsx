@@ -10,7 +10,6 @@ export default function Home() {
     >
       <ConnectButton
         accountStatus="avatar"
-        chainStatus={"none"}
         showBalance={{
           smallScreen: false,
           largeScreen: true,
