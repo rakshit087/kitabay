@@ -1,5 +1,5 @@
 import { Montserrat } from "next/font/google";
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -8,7 +8,14 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-col bg-primary-bg items-center justify-between p-24 ${montserrat.className}`}
     >
-      <ConnectButton />
+      <ConnectButton
+        accountStatus="avatar"
+        chainStatus={"none"}
+        showBalance={{
+          smallScreen: false,
+          largeScreen: true,
+        }}
+      />
     </main>
   );
 }
