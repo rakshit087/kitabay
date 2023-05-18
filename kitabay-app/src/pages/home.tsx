@@ -1,11 +1,5 @@
-import { Protected } from "@/layouts/Protected";
-
 const Home = () => {
-  return (
-    <Protected>
-      <p>Authenticated</p>
-    </Protected>
-  );
+  return <p>Authenticated</p>;
 };
 
 export default Home;
