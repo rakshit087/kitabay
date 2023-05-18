@@ -6,27 +6,46 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write .",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --config ./.prettierrc.json --write"
+    ],
+    "**/*.{css,scss,md,html,json}": [
+      "prettier --config ./.prettierrc.json --write"
+    ]
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.19",
     "@chakra-ui/react": "^2.6.1",
     "@emotion/react": "^11.11.0",
     "@emotion/styled": "^11.11.0",
     "@rainbow-me/rainbowkit": "^1.0.0",
-    "@types/node": "20.1.4",
-    "@types/react": "18.2.6",
-    "@types/react-dom": "18.2.4",
     "autoprefixer": "10.4.14",
-    "eslint": "8.40.0",
-    "eslint-config-next": "13.4.2",
     "framer-motion": "^10.12.12",
     "next": "13.4.2",
     "postcss": "8.4.23",
-    "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react": "18.2.0",
     "tailwindcss": "3.3.2",
-    "typescript": "5.0.4",
     "viem": "^0.3.26",
     "wagmi": "^1.0.5"
+  },
+  "devDependencies": {
+    "@types/node": "20.1.4",
+    "@types/react": "18.2.6",
+    "@types/react-dom": "18.2.4",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "eslint": "8.40.0",
+    "eslint-config-next": "13.4.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "typescript": "5.0.4"
   }
 }
