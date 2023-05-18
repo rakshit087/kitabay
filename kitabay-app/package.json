@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "cd .. && husky install kitabay-app/.husky"
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx}": [
@@ -31,7 +31,6 @@
     "postcss": "8.4.23",
     "react-dom": "18.2.0",
     "react": "18.2.0",
-    "tailwindcss": "3.3.2",
     "viem": "^0.3.26",
     "wagmi": "^1.0.5"
   },
