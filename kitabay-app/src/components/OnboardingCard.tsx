@@ -26,7 +26,7 @@ export const OnboardingCard = ({ isOpen, setIsOpen }: OnboardingCardProps) => {
   const [parent, enableAnimations] = useAutoAnimate();
   const { activeStep, setActiveStep } = useSteps({
     index: 1,
-    count: 3,
+    count: 4,
   });
   return (
     <Modal
@@ -100,9 +100,7 @@ export const OnboardingCard = ({ isOpen, setIsOpen }: OnboardingCardProps) => {
                 >
                   Mint Books as NFT
                 </Text>
-                <Text textAlign={'center'}>
-                  Mint your books as NFTs and get access to the book's digital copy. 
-                </Text>
+                <Text textAlign={'center'}>Mint your books as NFTs and get access to the book's digital copy.</Text>
               </Flex>
             )}
             {activeStep === 3 && (
@@ -128,7 +126,24 @@ export const OnboardingCard = ({ isOpen, setIsOpen }: OnboardingCardProps) => {
                   Sell, Trade, Exchange. It's an NFT!
                 </Text>
                 <Text textAlign={'center'}>
-                  Sell, Trade, Exchange your Book NFTs with other users. You have full custody over your library. 
+                  Sell, Trade, Exchange your Book NFTs with other users. You have full custody over your library.
+                </Text>
+              </Flex>
+            )}
+            {activeStep === 4 && (
+              <Flex
+                flexDir={'column'}
+                justifyContent={'center'}
+                alignItems={'center'}
+                height={'24rem'}
+              >
+                <Text
+                  fontSize={['md', 'lg', 'xl']}
+                  textAlign={'center'}
+                  marginY={4}
+                  fontWeight={'semibold'}
+                >
+                  First let's set up your account
                 </Text>
               </Flex>
             )}
@@ -142,17 +157,29 @@ export const OnboardingCard = ({ isOpen, setIsOpen }: OnboardingCardProps) => {
               setActiveStep(activeStep - 1);
             }}
             isDisabled={activeStep === 1}
+            width={"5rem"}
           >
             Back
           </Button>
 
-          <Button
-            colorScheme="teal"
-            onClick={() => setActiveStep(activeStep + 1)}
-            isDisabled={activeStep === 3}
-          >
-            Next
-          </Button>
+          {activeStep != 4 ? (
+            <Button
+              colorScheme="teal"
+              onClick={() => setActiveStep(activeStep + 1)}
+              isDisabled={activeStep === 4}
+              width={"5rem"}
+            >
+              Next
+            </Button>
+          ) : (
+            <Button
+              colorScheme="teal"
+              onClick={() => setActiveStep(activeStep + 1)}
+              width={"5rem"}
+            >
+              Finish
+            </Button>
+          )}
         </ModalFooter>
       </ModalContent>
     </Modal>
