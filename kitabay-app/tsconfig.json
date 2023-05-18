@@ -18,7 +18,11 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES6"
+    "target": "ES6",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/mongodb.js"],
   "exclude": ["node_modules"]
