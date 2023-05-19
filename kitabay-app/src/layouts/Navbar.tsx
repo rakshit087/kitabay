@@ -1,22 +1,30 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useContext } from 'react';
-import { AuthContext } from '@/contexts/authContext';
-import { Flex } from '@chakra-ui/react';
+import { Flex, Input } from '@chakra-ui/react';
+import { SearchIcon } from '@chakra-ui/icons';
 
 export const Navbar = () => {
-  const { authenticated } = useContext(AuthContext);
   return (
     <Flex
-      justifyContent={'flex-end'}
+      paddingY={4}
+      paddingX={12}
       alignItems={'center'}
-      w={'100%'}
-      h={'100%'}
-      bgColor={'primary-bg'}
-      borderBottom={'1px'}
-      borderColor={'gray-800'}
-      px={{ base: 4, md: 20 }}
-      py={4}
+      justifyContent={'space-between'}
+      position={'fixed'}
+      top={0}
+      left={"6rem"}
+      right={0}
     >
+      <Flex alignItems={"center"} height={"40px"}>
+      <SearchIcon color={"gray.500"} mr={3} />
+      <Input
+        placeholder="Search by title, author, address"
+        width={'24rem'}
+        variant={'unstyled'}
+        _placeholder={{
+          fontSize: 'sm',
+        }}
+      />
+      </Flex>
       <ConnectButton />
     </Flex>
   );
