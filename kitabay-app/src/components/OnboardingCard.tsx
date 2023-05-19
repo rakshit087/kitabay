@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import {
-  Box,
   Button,
   Modal,
   ModalOverlay,
@@ -8,11 +6,9 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  Progress,
   Text,
   Image,
   Flex,
-  SlideFade,
   useSteps,
 } from '@chakra-ui/react';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
@@ -31,9 +27,7 @@ export const OnboardingCard = ({ isOpen, setIsOpen }: OnboardingCardProps) => {
   return (
     <Modal
       isOpen={isOpen}
-      onClose={() => {
-        setIsOpen(false);
-      }}
+      onClose={() => {}}
       closeOnOverlayClick={false}
       isCentered
     >
@@ -133,9 +127,9 @@ export const OnboardingCard = ({ isOpen, setIsOpen }: OnboardingCardProps) => {
             {activeStep === 4 && (
               <Flex
                 flexDir={'column'}
-                justifyContent={'center'}
                 alignItems={'center'}
                 height={'24rem'}
+                paddingY={8}
               >
                 <Text
                   fontSize={['md', 'lg', 'xl']}
@@ -151,35 +145,23 @@ export const OnboardingCard = ({ isOpen, setIsOpen }: OnboardingCardProps) => {
         </ModalBody>
         <ModalFooter justifyContent={'space-between'}>
           <Button
-            colorScheme="teal"
             mr={3}
             onClick={() => {
               setActiveStep(activeStep - 1);
             }}
             isDisabled={activeStep === 1}
-            width={"5rem"}
+            width={'5rem'}
           >
             Back
           </Button>
 
-          {activeStep != 4 ? (
-            <Button
-              colorScheme="teal"
-              onClick={() => setActiveStep(activeStep + 1)}
-              isDisabled={activeStep === 4}
-              width={"5rem"}
-            >
-              Next
-            </Button>
-          ) : (
-            <Button
-              colorScheme="teal"
-              onClick={() => setActiveStep(activeStep + 1)}
-              width={"5rem"}
-            >
-              Finish
-            </Button>
-          )}
+          <Button
+            onClick={() => setActiveStep(activeStep + 1)}
+            isDisabled={activeStep === 4}
+            width={'5rem'}
+          >
+            Next
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>
