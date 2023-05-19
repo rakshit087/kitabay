@@ -12,16 +12,21 @@ import {
   useSteps,
 } from '@chakra-ui/react';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
-import { Form, Formik } from 'formik';
+import { Formik } from 'formik';
 import { OnboardingCard } from './OnboardingCard';
 import { OnboardingForm } from './OnboardingForm';
-
+import { makeUser } from '../services/makeUser';
+import { useAccount } from 'wagmi';
+import { useContext } from 'react';
+import { AuthContext } from '@/contexts/authContext';
 interface OnboardingModalProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
 }
 
 export const OnboardingModal = ({ isOpen, setIsOpen }: OnboardingModalProps) => {
+  const { address } = useAccount();
+  const { setUser, setAuthenticated } = useContext(AuthContext);
   const [parent, enableAnimations] = useAutoAnimate();
   const { activeStep, setActiveStep } = useSteps({
     index: 1,
@@ -50,8 +55,21 @@ export const OnboardingModal = ({ isOpen, setIsOpen }: OnboardingModalProps) => 
             name: '',
             avatar: '',
           }}
-          onSubmit={(values) => {
-            console.log(values);
+          onSubmit={async (values) => {
+            if (address) {
+              const res = await makeUser(address, values.name, values.avatar);
+              if (res) {
+                setUser({
+                  name: values.name,
+                  avatar: values.avatar,
+                  address: address,
+                });
+                setAuthenticated(true);
+                setIsOpen(false);
+              }
+            } else {
+              throw new Error('Wallet Not Connected');
+            }
           }}
         >
           {({ handleSubmit, errors, touched }) => (
@@ -84,7 +102,7 @@ export const OnboardingModal = ({ isOpen, setIsOpen }: OnboardingModalProps) => 
                     />
                   )}
                   {activeStep === 4 && (
-                    <OnboardingForm 
+                    <OnboardingForm
                       handleSubmit={handleSubmit}
                       errors={errors}
                       touched={touched}
@@ -117,7 +135,6 @@ export const OnboardingModal = ({ isOpen, setIsOpen }: OnboardingModalProps) => 
                     width={'5rem'}
                     onClick={() => {
                       handleSubmit();
-                      setIsOpen(false);
                     }}
                   >
                     Finish
