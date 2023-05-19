@@ -1,6 +1,5 @@
 import { Flex, FormControl, FormErrorMessage, FormLabel, Input, Text, VStack } from '@chakra-ui/react';
 import { Field } from 'formik';
-
 interface OnboardingFormProps {
   handleSubmit: () => void;
   errors: any;

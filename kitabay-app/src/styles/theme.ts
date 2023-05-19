@@ -7,11 +7,11 @@ export const theme = extendTheme(withDefaultColorScheme({ colorScheme: 'teal' })
   colors: {
     background: '#FDFBF3',
   },
- components: {
+  components: {
     Input: {
-        defaultProps: {
-            focusBorderColor: 'teal.500',
-        }
-    }
- }
-},);
+      defaultProps: {
+        focusBorderColor: 'teal.500',
+      },
+    },
+  },
+});
