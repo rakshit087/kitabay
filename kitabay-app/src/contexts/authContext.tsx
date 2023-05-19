@@ -32,15 +32,27 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
     (async () => {
       if (isConnected && address) {
         try {
-          const user = await db
+          const res = await db
             .collection('User')
             .record(address as string)
             .get();
+          if (res.data) {
+            setUser({
+              address: address,
+              name: res.data.name,
+              avatar: address,
+            });
+            setAuthenticated(true);
+          }
         } catch (e: any) {
           if (e.message === 'record/not-found error') {
             setShowOnboarding(true);
           }
         }
+      } 
+      else {
+        setUser(null);
+        setAuthenticated(false);
       }
     })();
   }, [address, isConnected]);
