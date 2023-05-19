@@ -1,5 +1,7 @@
-import { HamburgerIcon } from '@chakra-ui/icons';
+import { ChatIcon, HamburgerIcon } from '@chakra-ui/icons';
 import { Flex, IconButton } from '@chakra-ui/react';
+import { Icon } from '@chakra-ui/react';
+import { BiLibrary, BiHomeAlt, BiEdit, BiUser } from 'react-icons/bi';
 
 export const Sidebar = () => {
   return (
@@ -24,6 +26,37 @@ export const Sidebar = () => {
         colorScheme="whiteAlpha"
         aria-label={'Open Menu'}
       />
+      {/* vertically centered box */}
+      <Flex
+        flex={1}
+        flexDir={'column'}
+        justifyContent={'center'}
+      >
+        <Icon
+          as={BiHomeAlt}
+          fontSize={'36px'}
+          mb={12}
+          cursor={'pointer'}
+        />
+        <Icon
+          as={BiLibrary}
+          fontSize={'36px'}
+          mb={12}
+          cursor={'pointer'}
+        />
+        <Icon
+          as={BiEdit}
+          fontSize={'36px'}
+          mb={12}
+          cursor={'pointer'}
+        />
+        <Icon
+          as={BiUser}
+          fontSize={'36px'}
+          mb={12}
+          cursor={'pointer'}
+        />
+      </Flex>
     </Flex>
   );
 };
