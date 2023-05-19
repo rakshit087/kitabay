@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { createContext, useState } from 'react';
 import { useAccount } from 'wagmi';
 import { db } from '@/config/poybase.config';
-import { OnboardingCard } from '@/components/OnboardingCard';
+import { OnboardingModal } from '@/modules/Onboarding/components/OnboardingModal';
 
 interface UserI {
   address: string;
@@ -14,10 +14,12 @@ export const AuthContext = createContext<{
   user: UserI | null;
   setUser: (user: UserI | null) => void;
   authenticated: boolean;
+  setAuthenticated: (authenticated: boolean) => void;
 }>({
   user: null,
   setUser: () => {},
   authenticated: false,
+  setAuthenticated: () => {},
 });
 
 export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
@@ -44,8 +46,8 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
   }, [address, isConnected]);
 
   return (
-    <AuthContext.Provider value={{ user, setUser, authenticated }}>
-      <OnboardingCard
+    <AuthContext.Provider value={{ user, setUser, authenticated, setAuthenticated }}>
+      <OnboardingModal
         isOpen={showOnboarding}
         setIsOpen={setShowOnboarding}
       />
