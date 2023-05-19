@@ -8,22 +8,29 @@ export const Navbar = () => {
       paddingY={4}
       paddingX={12}
       alignItems={'center'}
-      justifyContent={'space-between'}
+      justifyContent={['flex-end', null, 'space-between']}
       position={'fixed'}
       top={0}
-      left={"6rem"}
+      left={'6rem'}
       right={0}
     >
-      <Flex alignItems={"center"} height={"40px"}>
-      <SearchIcon color={"gray.500"} mr={3} />
-      <Input
-        placeholder="Search by title, author, address"
-        width={'24rem'}
-        variant={'unstyled'}
-        _placeholder={{
-          fontSize: 'sm',
-        }}
-      />
+      <Flex
+        alignItems={'center'}
+        height={'40px'}
+        display={['none', 'none', 'flex']}
+      >
+        <SearchIcon
+          color={'gray.500'}
+          mr={3}
+        />
+        <Input
+          placeholder="Search by title, author, address"
+          width={'18rem'}
+          variant={'unstyled'}
+          _placeholder={{
+            fontSize: 'sm',
+          }}
+        />
       </Flex>
       <ConnectButton />
     </Flex>
