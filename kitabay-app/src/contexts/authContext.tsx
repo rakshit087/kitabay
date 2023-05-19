@@ -43,6 +43,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) =>
               avatar: address,
             });
             setAuthenticated(true);
+            setShowOnboarding(false);
           }
         } catch (e: any) {
           if (e.message === 'record/not-found error') {
