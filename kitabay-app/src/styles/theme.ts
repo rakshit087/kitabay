@@ -13,5 +13,10 @@ export const theme = extendTheme(withDefaultColorScheme({ colorScheme: 'teal' })
         focusBorderColor: 'teal.500',
       },
     },
+    Textarea: {
+      defaultProps: {
+        focusBorderColor: 'teal.500',
+      },
+    },
   },
 });
