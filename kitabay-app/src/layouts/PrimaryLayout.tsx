@@ -20,14 +20,9 @@ export const PrimaryLayout: React.FC<React.PropsWithChildren> = ({ children }) =
       width={'100%'}
     >
       <Sidebar />
-      <Box w={['calc(100% - 4rem)', null, 'calc(100% - 6rem)']}>
+      <Box w={['calc(100% - 4rem)', null, 'calc(100% - 6rem)']} position={"relative"} left={["4rem", null, "6rem"]}>
         <Navbar />
-        <Box
-          paddingTop={12}
-          paddingLeft={['4rem', null, '6rem']}
-        >
-          {children}
-        </Box>
+        {children}
       </Box>
     </Flex>
   );
