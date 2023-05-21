@@ -13,6 +13,8 @@ export const Navbar = () => {
       top={0}
       left={'6rem'}
       right={0}
+      backgroundColor={'background'}
+      zIndex={1}
     >
       <Flex
         alignItems={'center'}
