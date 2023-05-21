@@ -10,7 +10,8 @@ export default function Home() {
   return (
     <Box
       style={montserrat.style}
-      padding={12}
+      paddingX={12}
+      paddingY={24}
     >
       <Text fontSize={['4xl', null, '6xl', null, '7xl']} lineHeight={1.3} mb={3}>
         Welcome back,
