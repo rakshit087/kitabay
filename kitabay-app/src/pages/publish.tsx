@@ -4,6 +4,10 @@ import { useContext } from 'react';
 import { AuthContext } from '@/contexts/authContext';
 import { Introduction } from '@/modules/Publish/components/Introduction';
 import { Title } from '@/modules/Publish/components/Title';
+import { Description } from '@/modules/Publish/components/Description';
+import { Tokenomics } from '@/modules/Publish/components/Tokenomics';
+import { BookCover } from '@/modules/Publish/components/BookCover';
+import { BookContent } from '@/modules/Publish/components/BookContent';
 
 const montserrat = Montserrat({ subsets: ['latin'] });
 
@@ -19,8 +23,10 @@ const Publish = () => {
       >
         <Introduction />
         <Title />
-        <Introduction />
-        <Introduction />
+        <Description />
+        <Tokenomics />
+        <BookCover />
+        <BookContent />
       </Box>
   );
 };

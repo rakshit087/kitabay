@@ -1,4 +1,4 @@
-import { Button, Flex, Link, Text } from '@chakra-ui/react';
+import { Button, Flex, Link, Text, Textarea } from '@chakra-ui/react';
 export const Description = () => {
   return (
     <Flex
@@ -15,14 +15,19 @@ export const Description = () => {
         lineHeight={1.3}
         mb={12}
       >
-        Describe your Kitab 
-        <br />
-        with Kitabay.
+        Describe your Kitab
       </Text>
       <Text fontSize={'xl'}>
-        Tell us about your book. <br /> 
+        Write a short summary of your book. <br /> This will be displayed on the marketplace and as NFT's metadata.
       </Text>
-      <Link href="#title">
+
+      <Textarea
+        placeholder="Enter title"
+        variant={'flushed'}
+        _placeholder={{ fontSize: 'xl' }}
+        mt={12}
+      />
+      <Link href="#tokenomics">
         <Button
           mt={12}
           colorScheme={'teal'}

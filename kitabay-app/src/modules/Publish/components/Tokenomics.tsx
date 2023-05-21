@@ -1,5 +1,5 @@
 import { Button, Flex, Input, Link, Text } from '@chakra-ui/react';
-export const Title = () => {
+export const Tokenomics = () => {
   return (
     <Flex
       height={'100vh'}
@@ -8,25 +8,35 @@ export const Title = () => {
       scrollSnapAlign={'start'}
       paddingX={12}
       paddingY={24}
-      id="title"
+      id="tokenomics"
     >
       <Text
         fontSize={['4xl', null, '5xl']}
         lineHeight={1.3}
         mb={12}
       >
-        Title of your Kitab (book)
+        Let's work on the tokenomics of your Kitab
       </Text>
-      <Text fontSize={'xl'}>
-        What is your book called? <br /> This will also serve as the title of your Book's NFT (non-fungible token).
+      <Text
+        fontSize={'xl'}
+        mb={4}
+      >
+        Here you can decide the number of copies you want to sell and the price of the book token. <br />
+        Remeber the more rare the book is the more valuable it is.
       </Text>
       <Input
-        placeholder="Enter title"
+        placeholder="Enter the no of copies you want to sell"
         variant={'flushed'}
         _placeholder={{ fontSize: 'xl' }}
         mt={12}
       />
-      <Link href="#description">
+      <Input
+        placeholder="Enter the price of the book token in FIL"
+        variant={'flushed'}
+        _placeholder={{ fontSize: 'xl' }}
+        mt={12}
+      />
+      <Link href="#cover">
         <Button
           mt={12}
           colorScheme={'teal'}

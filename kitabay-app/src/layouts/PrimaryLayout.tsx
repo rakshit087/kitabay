@@ -2,7 +2,7 @@ import React from 'react';
 import { useContext } from 'react';
 import { AuthContext } from '@/contexts/authContext';
 import { montserrat } from '@/styles/theme';
-import { Box, Flex, calc } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import { LandingSection } from './Landing';
 import { Sidebar } from './Sidebar';
 import { Navbar } from './Navbar';
