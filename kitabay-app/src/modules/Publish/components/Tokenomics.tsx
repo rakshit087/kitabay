@@ -1,8 +1,10 @@
 import { Button, Flex, Input, Link, Text } from '@chakra-ui/react';
-export const Tokenomics = () => {
+import { Field } from 'formik';
+
+export const Tokenomics = (props: { errors: any; touched: any }) => {
   return (
     <Flex
-      height={'100vh'}
+      height={'100%'}
       flexDirection={'column'}
       position={'relative'}
       scrollSnapAlign={'start'}
@@ -24,17 +26,39 @@ export const Tokenomics = () => {
         Here you can decide the number of copies you want to sell and the price of the book token. <br />
         Remeber the more rare the book is the more valuable it is.
       </Text>
-      <Input
-        placeholder="Enter the no of copies you want to sell"
-        variant={'flushed'}
-        _placeholder={{ fontSize: 'xl' }}
+      <Field
+        as={Input}
+        id="copies"
+        name="copies"
+        type="number"
+        variant="flushed"
+        validate={(value: any) => {
+          let error;
+          if (!value) {
+            error = 'Copies is required';
+          }
+          return error;
+        }}
+        width={'100%'}
         mt={12}
+        placeholder={'Enter the no of copies you want to sell'}
       />
-      <Input
-        placeholder="Enter the price of the book token in FIL"
-        variant={'flushed'}
-        _placeholder={{ fontSize: 'xl' }}
+      <Field
+        as={Input}
+        id="price"
+        name="price"
+        type="number"
+        variant="flushed"
+        validate={(value: any) => {
+          let error;
+          if (!value) {
+            error = 'Price is required';
+          }
+          return error;
+        }}
+        width={'100%'}
         mt={12}
+        placeholder={'Enter the price of your book'}
       />
       <Link href="#cover">
         <Button

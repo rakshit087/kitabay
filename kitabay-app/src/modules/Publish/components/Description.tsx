@@ -1,8 +1,12 @@
 import { Button, Flex, Link, Text, Textarea } from '@chakra-ui/react';
-export const Description = () => {
+import { Field } from 'formik';
+export const Description = (props: {
+  errors: any;
+  touched: any;
+}) => {
   return (
     <Flex
-      height={'100vh'}
+      height={'100%'}
       flexDirection={'column'}
       position={'relative'}
       scrollSnapAlign={'start'}
@@ -20,12 +24,22 @@ export const Description = () => {
       <Text fontSize={'xl'}>
         Write a short summary of your book. <br /> This will be displayed on the marketplace and as NFT's metadata.
       </Text>
-
-      <Textarea
-        placeholder="Enter title"
-        variant={'flushed'}
-        _placeholder={{ fontSize: 'xl' }}
+      <Field
+        as={Textarea}
+        id="description"
+        name="description"
+        type="text"
+        variant="flushed"
+        validate={(value: any) => {
+          let error;
+          if (!value) {
+            error = 'Description is required';
+          }
+          return error;
+        }}
+        width={'100%'}
         mt={12}
+        placeholder={'Enter the description of your book'}
       />
       <Link href="#tokenomics">
         <Button
