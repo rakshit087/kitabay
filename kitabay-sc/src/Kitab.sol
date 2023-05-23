@@ -19,12 +19,14 @@ contract Kitab is ERC721Royalty, Ownable {
         string memory symbol,
         string memory baseTokenURI,
         uint256 maxSupply,
-        uint256 initialPrice
+        uint256 initialPrice,
+        address newOwner
     ) ERC721(name, symbol) {
         _baseTokenURI = baseTokenURI;
         MAX_SUPPLY = maxSupply;
         INITIAL_PRICE = initialPrice;
         _setDefaultRoyalty(address(this), 1000);
+        transferOwnership(newOwner);
     }
 
     function _baseURI() internal view override returns (string memory) {

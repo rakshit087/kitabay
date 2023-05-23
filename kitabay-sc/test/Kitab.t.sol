@@ -19,7 +19,8 @@ contract KitabTest is Test {
             "KITAB",
             "https://example.com/",
             maxSupply,
-            initialPrice
+            initialPrice,
+            address(this)
         );
         owner = address(this);
     }
