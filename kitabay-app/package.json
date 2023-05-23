@@ -45,7 +45,8 @@
     "react-filepond": "^7.1.2",
     "react-icons": "^4.8.0",
     "viem": "^0.3.26",
-    "wagmi": "^1.0.5"
+    "wagmi": "^1.0.5",
+    "yup": "^1.1.1"
   },
   "devDependencies": {
     "@types/node": "20.1.4",
