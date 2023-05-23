@@ -1,11 +1,11 @@
 import React from 'react';
 import { getDefaultWallets, RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
-import { filecoinHyperspace } from 'wagmi/chains';
+import { filecoinHyperspace, localhost } from 'wagmi/chains';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import { publicProvider } from 'wagmi/providers/public';
 
 export const RainbowKit: React.FC<React.PropsWithChildren> = ({ children }) => {
-  const { chains, publicClient } = configureChains([filecoinHyperspace], [publicProvider()]);
+  const { chains, publicClient } = configureChains([filecoinHyperspace, localhost], [publicProvider()]);
 
   const { connectors } = getDefaultWallets({
     appName: 'My RainbowKit App',
