@@ -40,12 +40,14 @@ export const Sidebar = () => {
             cursor={'pointer'}
           />
         </Link>
-        <Icon
-          as={BiLibrary}
-          fontSize={'36px'}
-          mb={12}
-          cursor={'pointer'}
-        />
+        <Link href={'/explore'}>
+          <Icon
+            as={BiLibrary}
+            fontSize={'36px'}
+            mb={12}
+            cursor={'pointer'}
+          />
+        </Link>
         <Link href={'/publish'}>
           <Icon
             as={BiEdit}
