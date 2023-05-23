@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Formik } from 'formik';
 import { Box } from '@chakra-ui/react';
 import { KitabFormSchema } from '@/modules/Publish/validation/kitabFormSchema';
@@ -11,45 +11,18 @@ import { Tokenomics } from '@/modules/Publish/components/Tokenomics';
 import { BookCover } from '@/modules/Publish/components/BookCover';
 import { BookContent } from '@/modules/Publish/components/BookContent';
 import { uploadNFTMetadata } from '@/modules/Publish/services/uploadNFTMetadata';
-import { useContractWrite, useWaitForTransaction } from 'wagmi';
-import { useToast } from '@chakra-ui/react';
-import KitabFactory from '@/abi/KitabFactory.json';
+import { deployNFT } from '@/modules/Publish/services/deployNFT';
+import { useShowErrorToast } from '@/hooks/showErrorToast';
+import { useShowSuccessToast } from '@/hooks/showSuccessToast';
+import { useRouter } from 'next/router';
 
 const Publish = () => {
   const { user } = useContext(AuthContext);
   const { setLoader } = useContext(loadingContext);
-  const toast = useToast();
-  const { data, write, isError } = useContractWrite({
-    address: '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512',
-    abi: KitabFactory,
-    functionName: 'createKitab',
-  });
-  const { isSuccess, data: contractAddress } = useWaitForTransaction({hash: data?.hash});
-  useEffect(() => {
-    if (isSuccess) {
-      console.log(data);
-      console.log(contractAddress);
-      toast({
-        title: 'NFT Contract deployed successfully!',
-        description: 'Your NFT Contract has been deployed at' + data,
-        status: 'success',
-        duration: 5000,
-        isClosable: true,
-      });
-      setLoader(false, '');
-    }
-    if (isError) {
-      toast({
-        title: 'Error',
-        description: 'Something went wrong!',
-        status: 'error',
-        duration: 5000,
-        isClosable: true,
-      });
-      setLoader(false, '');
-    }
-  }, [isSuccess, isError]);
-
+  const router = useRouter();
+  const [contractAddress, setContractAddress] = useState('');
+  const { setSuccessMessage } = useShowSuccessToast();
+  const { setErrorMessage } = useShowErrorToast();
   return (
     <Box
       w={'full'}
@@ -69,22 +42,28 @@ const Publish = () => {
         }}
         onSubmit={async (values) => {
           setLoader(true, 'Uploading NFT metadata to IPFS...');
-          console.log(values);
           const res = await uploadNFTMetadata({
             name: values.title,
             description: values.description,
             image: values.bookCover,
           });
           setLoader(true, 'Deploying NFT Contract...');
-          write({
-            args: [
+          try {
+            const deployedAddress = await deployNFT(
               values.title,
               values.title.slice(0, 5).toUpperCase(),
-              'https://gateway.lighthouse.storage/ipfs/' + res.data.Hash,
+              'https://gateway.lighthouse.storage/ipfs/' + res.data.cid,
               values.copies,
-              values.price,
-            ],
-          });
+              values.price
+            );
+            setContractAddress(deployedAddress);
+            setSuccessMessage('NFT Contract deployed successfully at ' + deployedAddress);
+            setLoader(false, '');
+            router.push('#content');
+          } catch (error) {
+            setErrorMessage('Error while deploying NFT Contract');
+            setLoader(false, '');
+          }
         }}
         validationSchema={KitabFormSchema}
       >
@@ -102,7 +81,7 @@ const Publish = () => {
           </>
         )}
       </Formik>
-      <BookContent />
+      {contractAddress && <BookContent />}
     </Box>
   );
 };

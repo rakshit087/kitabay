@@ -8,7 +8,7 @@ export const BookContent = () => {
   const [loading, setLoading] = useState(false);
   return (
     <Flex
-      height={'100vh'}
+      height={'100%'}
       flexDirection={'column'}
       position={'relative'}
       scrollSnapAlign={'start'}
@@ -46,7 +46,7 @@ export const BookContent = () => {
           isLoading={loading}
           onClick={() => setLoading(true)}
         >
-          Continue
+          Finish
         </Button>
       </Link>
     </Flex>
