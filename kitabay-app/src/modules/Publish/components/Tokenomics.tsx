@@ -1,7 +1,7 @@
 import { Button, Flex, Input, Link, Text } from '@chakra-ui/react';
 import { Field } from 'formik';
 
-export const Tokenomics = (props: { errors: any; touched: any }) => {
+export const Tokenomics = () => {
   return (
     <Flex
       height={'100%'}
@@ -32,13 +32,6 @@ export const Tokenomics = (props: { errors: any; touched: any }) => {
         name="copies"
         type="number"
         variant="flushed"
-        validate={(value: any) => {
-          let error;
-          if (!value) {
-            error = 'Copies is required';
-          }
-          return error;
-        }}
         width={'100%'}
         mt={12}
         placeholder={'Enter the no of copies you want to sell'}
@@ -49,13 +42,6 @@ export const Tokenomics = (props: { errors: any; touched: any }) => {
         name="price"
         type="number"
         variant="flushed"
-        validate={(value: any) => {
-          let error;
-          if (!value) {
-            error = 'Price is required';
-          }
-          return error;
-        }}
         width={'100%'}
         mt={12}
         placeholder={'Enter the price of your book'}

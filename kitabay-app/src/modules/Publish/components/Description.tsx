@@ -1,9 +1,7 @@
 import { Button, Flex, Link, Text, Textarea } from '@chakra-ui/react';
 import { Field } from 'formik';
-export const Description = (props: {
-  errors: any;
-  touched: any;
-}) => {
+
+export const Description = () => {
   return (
     <Flex
       height={'100%'}
@@ -30,13 +28,6 @@ export const Description = (props: {
         name="description"
         type="text"
         variant="flushed"
-        validate={(value: any) => {
-          let error;
-          if (!value) {
-            error = 'Description is required';
-          }
-          return error;
-        }}
         width={'100%'}
         mt={12}
         placeholder={'Enter the description of your book'}
