@@ -25,6 +25,11 @@
         "internalType": "uint256",
         "name": "initialPrice",
         "type": "uint256"
+      },
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
       }
     ],
     "stateMutability": "nonpayable",
