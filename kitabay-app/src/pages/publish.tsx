@@ -67,7 +67,7 @@ const Publish = () => {
         }}
         validationSchema={KitabFormSchema}
       >
-        {({ handleSubmit, errors, setFieldValue }) => (
+        {({ handleSubmit, errors, setFieldValue, values }) => (
           <>
             <Introduction />
             <Title />
@@ -78,10 +78,15 @@ const Publish = () => {
               setFieldValue={setFieldValue}
               errors={errors}
             />
+            {contractAddress && (
+              <BookContent
+                contractAddress={contractAddress}
+                values={values}
+              />
+            )}
           </>
         )}
       </Formik>
-      {contractAddress && <BookContent />}
     </Box>
   );
 };
