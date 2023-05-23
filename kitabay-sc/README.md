@@ -1,1 +1,1 @@
-KitabFactory Deployed at: 0x337D7ECE2E38472d4E995b0dF30551b58ff42d33
+KitabFactory Deployed at: 0x3e54E173CFbEb94f6f5912324dF21e979fD27Dc1

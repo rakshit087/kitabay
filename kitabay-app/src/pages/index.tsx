@@ -17,11 +17,13 @@ export default function Home() {
       .collection('User')
       .record(user?.address || '')
       .get();
-    const userLib = userDetails.data.library.map(async (bookId: any) => {
+    const userLib = userDetails.data?.library?.map(async (bookId: any) => {
       return await db.collection('Kitab').record(bookId.id).get();
     });
-    const books = await Promise.all(userLib);
-    setLibrary(books.map((book) => book.data));
+    if (userLib) {
+      const books = await Promise.all(userLib);
+      setLibrary(books.map((book) => book.data));
+    }
   };
   useEffect(() => {
     if (library.length == 0) {
@@ -102,7 +104,7 @@ export default function Home() {
           })}
         </Grid>
       ) : (
-        <Text fontSize={'xl'}>You have no books in your library</Text>
+        <Text fontSize={'sm'}>You have no books in your library</Text>
       )}
     </Box>
   );

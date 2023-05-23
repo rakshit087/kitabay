@@ -9,7 +9,7 @@ export const deployNFT = async (
     price: number,
 ) => {
     const {hash} = await writeContract({
-        address: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+        address: "0x3e54E173CFbEb94f6f5912324dF21e979fD27Dc1",
         abi: KitabFactory,
         functionName: "createKitab",
         args: [name, symbol, baseURI, maxSupply, price]

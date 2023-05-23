@@ -82,7 +82,7 @@ export const KitabMintModal = (props: KitabModalProps) => {
                     fontSize={'md'}
                     mb={2}
                   >
-                    {props.kitab.description.slice(0, 100) + (props.kitab.description.length > 100 ? '...' : '')}
+                    {props.kitab.description.slice(0, 150) + (props.kitab.description.length > 150 ? '...' : '')}
                   </Text>
                 </Box>
                 <Text
