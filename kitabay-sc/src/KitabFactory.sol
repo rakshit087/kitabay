@@ -12,10 +12,9 @@ contract KitabFactory {
         string memory _baseURI,
         uint256 _maxSupply,
         uint256 _initialPrice
-    ) external returns (address kitabAddress) {
-        Kitab kitab = new Kitab(_name, _symbol, _baseURI, _maxSupply, _initialPrice, msg.sender);
-        emit KitabCreated(address(kitab), msg.sender);
-        kitabAddress = address(kitab);
-        return kitabAddress;
+    ) external returns (address kitab) {
+        kitab = address(new Kitab(_name, _symbol, _baseURI, _maxSupply, _initialPrice, msg.sender));
+        emit KitabCreated(kitab, msg.sender);
+        return kitab;
     }
 }
