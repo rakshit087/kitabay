@@ -1,23 +1,5 @@
-import {
-  Modal,
-  ModalOverlay,
-  ModalContent,
-  ModalFooter,
-  ModalBody,
-  Flex,
-  Box,
-  Text,
-  Button,
-  Link,
-  VStack,
-} from '@chakra-ui/react';
-import { useContext } from 'react';
-import { loadingContext } from '@/contexts/loadingContext';
-import { useShowErrorToast } from '@/hooks/showErrorToast';
-import { useShowSuccessToast } from '@/hooks/showSuccessToast';
-import { useAccount } from 'wagmi';
-import { mintKitab } from '../services/mintKitab';
-import { db } from '@/config/poybase.config';
+import { Modal, ModalOverlay, ModalContent, ModalFooter, ModalBody, Flex, Box, Text, Button } from '@chakra-ui/react';
+import Link from 'next/link';
 
 interface KitabModalProps {
   isOpen: boolean;
@@ -34,12 +16,7 @@ interface KitabModalProps {
   };
 }
 
-export const KitabMintModal = (props: KitabModalProps) => {
-  const { address } = useAccount();
-  const { setLoader } = useContext(loadingContext);
-  const { setErrorMessage } = useShowErrorToast();
-  const { setSuccessMessage } = useShowSuccessToast();
-
+export const KitabViewModal = (props: KitabModalProps) => {
   return (
     props.kitab && (
       <Modal
@@ -96,31 +73,18 @@ export const KitabMintModal = (props: KitabModalProps) => {
             </Flex>
           </ModalBody>
           <ModalFooter>
-            <Button
-              colorScheme="teal"
-              w={'100%'}
-              mt={8}
-              onClick={async () => {
-                setLoader(true, 'Minting Kitab');
-                try {
-                  await mintKitab(props.kitab.id as `0x${string}`, props.kitab.price, address || '0x0');
-                  setSuccessMessage('Kitab minted successfully!');
-                  await db
-                    .collection('User')
-                    .record(address as string)
-                    .call('updateLibrary', [db.collection('Kitab').record(props.kitab.id)]);
-                  setLoader(false, '');
-                  props.onClose();
-                } catch (error) {
-                  console.log(error);
-                  setErrorMessage('Error minting Kitab');
-                  setLoader(false, '');
-                  props.onClose();
-                }
-              }}
+            <Link
+              href={`https://files.lighthouse.storage/viewFile/${props.kitab.content}`}
+              target="_blank"
             >
-              {`Mint Kitab for ${props.kitab.price} FIL`}
-            </Button>
+              <Button
+                colorScheme="teal"
+                w={'100%'}
+                mt={8}
+              >
+                {`View Kitab`}
+              </Button>
+            </Link>
           </ModalFooter>
         </ModalContent>
       </Modal>
