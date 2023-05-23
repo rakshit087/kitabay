@@ -20,7 +20,7 @@ export const Description = () => {
         Describe your Kitab
       </Text>
       <Text fontSize={'xl'}>
-        Write a short summary of your book. <br /> This will be displayed on the marketplace and as NFT's metadata.
+        Write a short summary of your book. <br /> This will be displayed on the marketplace and as NFT&apos;s metadata.
       </Text>
       <Field
         as={Textarea}

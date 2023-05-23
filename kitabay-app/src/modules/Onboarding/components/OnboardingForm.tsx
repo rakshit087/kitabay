@@ -18,7 +18,7 @@ export const OnboardingForm = (props: OnboardingFormProps) => {
         textAlign={'center'}
         fontWeight={'semibold'}
       >
-        First let's set up your account
+        First let&apos;s set up your account
       </Text>
       <VStack
         spacing={4}

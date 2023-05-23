@@ -4,7 +4,7 @@ import { createContext, useState } from 'react';
 export const loadingContext = createContext<{
   setLoader: (loading: boolean, message: string) => void;
 }>({
-  setLoader: () => {},
+  setLoader: () => undefined,
 });
 
 export const LoadingProvider: React.FC<React.PropsWithChildren> = ({ children }) => {

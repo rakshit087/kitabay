@@ -20,7 +20,7 @@ export const Title = () => {
         Title of your Kitab (book)
       </Text>
       <Text fontSize={'xl'}>
-        What is your book called? <br /> This will also serve as the title of your Book's NFT (non-fungible token).
+        What is your book called? <br /> This will also serve as the title of your Book&apos;s NFT (non-fungible token).
       </Text>
         <Field
           as={Input}

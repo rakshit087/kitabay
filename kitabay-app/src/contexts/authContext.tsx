@@ -17,9 +17,9 @@ export const AuthContext = createContext<{
   setAuthenticated: (authenticated: boolean) => void;
 }>({
   user: null,
-  setUser: () => {},
+  setUser: () => undefined,
   authenticated: false,
-  setAuthenticated: () => {},
+  setAuthenticated: () => undefined,
 });
 
 export const AuthProvider: React.FC<React.PropsWithChildren> = ({ children }) => {

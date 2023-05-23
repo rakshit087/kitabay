@@ -17,7 +17,7 @@ export const Tokenomics = () => {
         lineHeight={1.3}
         mb={12}
       >
-        Let's work on the tokenomics of your Kitab
+        Let&apos;s work on the tokenomics of your Kitab
       </Text>
       <Text
         fontSize={'xl'}

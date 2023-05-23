@@ -7,8 +7,6 @@ import {
   ModalFooter,
   ModalBody,
   Text,
-  Image,
-  Flex,
   useSteps,
 } from '@chakra-ui/react';
 import { useAutoAnimate } from '@formkit/auto-animate/react';
@@ -35,7 +33,7 @@ export const OnboardingModal = ({ isOpen, setIsOpen }: OnboardingModalProps) => 
   return (
     <Modal
       isOpen={isOpen}
-      onClose={() => {}}
+      onClose={() => undefined}
       closeOnOverlayClick={false}
       isCentered
     >

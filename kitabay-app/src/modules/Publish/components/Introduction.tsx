@@ -34,7 +34,7 @@ export const Introduction = () => {
         fontSize={['sm', null, 'lg']}
       >
         <ListItem>
-          <Text>A user with your book's NFT will have access to book's content.</Text>
+          <Text>A user with your book&apos;s NFT will have access to book&apos;s content.</Text>
         </ListItem>
         <ListItem>
           <Text>You are free to decide the number of copies and the price of the book.</Text>

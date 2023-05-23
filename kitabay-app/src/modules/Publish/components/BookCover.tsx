@@ -35,7 +35,7 @@ export const BookCover = (props: {
       >
         The cover of your Kitab is the first thing people will see when they find it on Kitabay. Make sure it stands
         out! <br />
-        This cover will also be a part of NFT's metadata.
+        This cover will also be a part of NFT&apos;s metadata.
       </Text>
       <Box my={12}>
         <input

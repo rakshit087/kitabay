@@ -8,6 +8,7 @@ export const mintKitab = async (address: `0x${string}`, price: number, accountAd
     abi: KitabAbi,
     functionName: 'safeMint',
     args: [accountAddress],
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     //@ts-ignore
     value: ethers.parseEther(price.toString()),
   });
